@@ -24,10 +24,23 @@ from PyQt4.QtGui import QImage, QDialog,\
     QGroupBox, QPalette, QColor, QButtonGroup
 
 import dcmreaddata
+from skimage.segmentation import random_walker
+import cv2
+import skimage.exposure as skexp
+import matplotlib.pyplot as plt
+from skimage.segmentation import mark_boundaries
+import os.path as op
+import os
+import misc
 
 # BGRA order
 CONTOURS_COLORTABLE = np.array([[255, 255, 255, 0],
-                                [255, 0, 0, 64]], dtype=np.uint8)
+                                [0, 0, 255, 255], #red
+                                [0, 255, 0, 255], #green
+                                [255, 0, 0, 255], #blue
+                                [255, 255, 0, 255], #cyan
+                                [255, 0, 255, 255], #magenta
+                                ], dtype=np.uint8)
 SEEDS_COLORTABLE = np.array([[255, 255, 255, 0],
                              [0, 0, 255, 255], #red
                              [0, 255, 0, 255], #green
@@ -125,8 +138,7 @@ class SliceBox(QLabel):
     Widget for marking reagions of interest in DICOM slices.
     """
 
-    def __init__(self, sliceSize, grid,
-                 mode='seeds'):
+    def __init__(self, sliceSize, grid, mode='seeds'):
         """
         Initialize SliceBox.
 
@@ -390,7 +402,7 @@ class SliceBox(QLabel):
     def mousePressEvent(self, event):
         if event.button() in self.box_buttons:
             self.drawing = True
-            self.seed_mark = self.box_buttons[event.button()]
+            # self.seed_mark = self.box_buttons[event.button()]
             self.last_position = self.gridPosition(event.pos())
 
         elif event.button() == Qt.MiddleButton:
@@ -508,11 +520,12 @@ class QTSeedEditor(QDialog):
             Editor mode.
         """
 
+        self.slab = {}
+
         # picture
         grid = height / float(shape[1] * vscale[1])
         mgrid = (grid * vscale[0], grid * vscale[1])
-        self.slice_box = SliceBox(shape[:-1], mgrid,
-                                  mode)
+        self.slice_box = SliceBox(shape[:-1], mgrid, mode)
         self.slice_box.setScrollFun(self.scrollSlices)
         self.connect(self.slice_box, SIGNAL('focus_slider'), self.focusSliceSlider)
 
@@ -544,6 +557,7 @@ class QTSeedEditor(QDialog):
 
         #radio button group for choosing seed class ------------------------
         self.current_class = 1
+        self.slice_box.seed_mark = self.current_class
         number_group = QGroupBox(QString('Class markers'))
         vbox_NG = QVBoxLayout()
         r1 = QRadioButton('class 1')
@@ -577,8 +591,11 @@ class QTSeedEditor(QDialog):
         #-------------------------------------------------------------------
 
         # buttons
-        btn_quit = QPushButton("Return", self)
+        btn_quit = QPushButton("Quit", self)
         btn_quit.clicked.connect(self.quit)
+
+        btn_save = QPushButton('Save', self)
+        btn_save.clicked.connect(self.save)
 
         combo_dmask = QComboBox(self)
         combo_dmask.activated.connect(self.changeMask)
@@ -593,14 +610,12 @@ class QTSeedEditor(QDialog):
         vopts = []
         vmenu = []
         appmenu = []
-        if mode == 'seed' and self.mode_fun is not None:
+        if mode == 'seed':
             btn_recalc = QPushButton("Recalculate", self)
             btn_recalc.clicked.connect(self.recalculate)
             appmenu.append(QLabel('<b>Segmentation mode</b><br><br><br>' +
                                   'Select the region of interest<br>' +
-                                  'using the mouse buttons:<br><br>' +
-                                  '&nbsp;&nbsp;<i>left</i> - inner region<br>' +
-                                  '&nbsp;&nbsp;<i>right</i> - outer region<br><br>'))
+                                  'using the mouse buttons.<br><br>'))
             appmenu.append(btn_recalc)
             appmenu.append(QLabel())
             self.volume_label = QLabel('Volume [mm3]:\n  unknown')
@@ -620,34 +635,34 @@ class QTSeedEditor(QDialog):
             vopts.append(QLabel('Selection mode:'))
             vopts.append(combo_contour)
 
-        if mode == 'crop':
-            btn_crop = QPushButton("Crop", self)
-            btn_crop.clicked.connect(self.crop)
-            appmenu.append(QLabel('<b>Crop mode</b><br><br><br>' +
-                                  'Select the crop region<br>' +
-                                  'using the left mouse button<br><br>'))
-            appmenu.append(btn_crop)
-
-        if mode == 'draw':
-            appmenu.append(QLabel('<b>Manual segmentation<br> mode</b><br><br><br>' +
-                                  'Mark the region of interest<br>' +
-                                  'using the mouse buttons:<br><br>' +
-                                  '&nbsp;&nbsp;<i>left</i> - draw<br>' +
-                                  '&nbsp;&nbsp;<i>right</i> - erase<br>' +
-                                  '&nbsp;&nbsp;<i>middle</i> - vol. erase<br><br>'))
-
-            btn_reset = QPushButton("Reset", self)
-            btn_reset.clicked.connect(self.resetSliceDraw)
-            vmenu.append(None)
-            vmenu.append(btn_reset)
-
-            combo_erase_options = ['inside', 'outside']
-            combo_erase = QComboBox(self)
-            combo_erase.activated[str].connect(self.changeEraseMode)
-            combo_erase.addItems(combo_erase_options)
-            self.changeEraseMode(combo_erase_options[combo_erase.currentIndex()])
-            vopts.append(QLabel('Volume erase mode:'))
-            vopts.append(combo_erase)
+        # if mode == 'crop':
+        #     btn_crop = QPushButton("Crop", self)
+        #     btn_crop.clicked.connect(self.crop)
+        #     appmenu.append(QLabel('<b>Crop mode</b><br><br><br>' +
+        #                           'Select the crop region<br>' +
+        #                           'using the left mouse button<br><br>'))
+        #     appmenu.append(btn_crop)
+        #
+        # if mode == 'draw':
+        #     appmenu.append(QLabel('<b>Manual segmentation<br> mode</b><br><br><br>' +
+        #                           'Mark the region of interest<br>' +
+        #                           'using the mouse buttons:<br><br>' +
+        #                           '&nbsp;&nbsp;<i>left</i> - draw<br>' +
+        #                           '&nbsp;&nbsp;<i>right</i> - erase<br>' +
+        #                           '&nbsp;&nbsp;<i>middle</i> - vol. erase<br><br>'))
+        #
+        #     btn_reset = QPushButton("Reset", self)
+        #     btn_reset.clicked.connect(self.resetSliceDraw)
+        #     vmenu.append(None)
+        #     vmenu.append(btn_reset)
+        #
+        #     combo_erase_options = ['inside', 'outside']
+        #     combo_erase = QComboBox(self)
+        #     combo_erase.activated[str].connect(self.changeEraseMode)
+        #     combo_erase.addItems(combo_erase_options)
+        #     self.changeEraseMode(combo_erase_options[combo_erase.currentIndex()])
+        #     vopts.append(QLabel('Volume erase mode:'))
+        #     vopts.append(combo_erase)
 
         hbox = QHBoxLayout()
         vbox = QVBoxLayout()
@@ -691,6 +706,7 @@ class QTSeedEditor(QDialog):
         vbox_left.addWidget(self.get_line())
         vbox_left.addWidget(number_group)
 
+        vbox_app.addWidget(btn_save)
         vbox_app.addStretch(1)
         vbox_app.addWidget(btn_quit)
 
@@ -791,6 +807,7 @@ class QTSeedEditor(QDialog):
 
     def change_seed_class(self, id):
         self.current_class = id
+        self.slice_box.seed_mark = self.current_class
         print 'Current seed class changed to ', id, '.'
 
     def showStatus(self, msg):
@@ -1082,13 +1099,21 @@ class QTSeedEditor(QDialog):
     def recalculate(self, event):
         self.saveSliceSeeds()
         if np.abs(np.min(self.seeds) - np.max(self.seeds)) < 2:
-            self.showStatus('Inner and outer regions not defined!')
+            self.showStatus('At least two regions must be marked!')
             return
 
         self.showStatus("Processing...")
-        self.mode_fun(self)
+        # idx = 3
+        # s = random_walker(self.img[idx,:,:], self.seeds[idx,:,:])#, mode='cg_mg')
+        # plt.figure()
+        # plt.imshow(mark_boundaries(self.img[idx,:,:], s))
+        # plt.show()
+        # self.segmentation = np.zeros(self.img.shape)
+        # self.segmentation[idx,:,:] = s
+        self.segmentation = random_walker(self.img, self.seeds, mode='cg_mg')
+        self.setContours(self.segmentation - 1)
         self.selectSlice(self.actual_slice)
-        self.updateVolume()
+        # self.updateVolume()
         self.showStatus("Done")
 
     def deleteSliceSeeds(self, event):
@@ -1104,6 +1129,44 @@ class QTSeedEditor(QDialog):
 
     def quit(self, event):
         self.close()
+
+    def save(self, event):
+        odp = os.path.expanduser("~/lisa_data")
+        if not op.exists(odp):
+            os.makedirs(odp)
+
+        data = self.export()
+        # data['version'] = self.version
+        # data['experiment_caption'] = self.experiment_caption
+        # data['lisa_operator_identifier'] = self.lisa_operator_identifier
+        pth, filename = op.split(op.normpath(self.datapath))
+        filename += "-" + self.experiment_caption
+        filepath = 'org-' + filename + '.pklz'
+        filepath = op.join(odp, filepath)
+        filepath = misc.suggest_filename(filepath)
+        misc.obj_to_file(data, filepath, filetype='pklz')
+
+        filepath = 'organ_last.pklz'
+        filepath = op.join(odp, filepath)
+        misc.obj_to_file(data, filepath, filetype='pklz')
+
+    def export(self):
+        slab = {}
+        slab['none'] = 0
+        slab['liver'] = 1
+        slab['lesions'] = 6
+        slab.update(self.slab)
+
+        data = {}
+        data['version'] = (1, 0, 1)
+        data['data3d'] = self.img
+        # data['crinfo'] = self.crinfo
+        data['segmentation'] = self.segmentation
+        data['slab'] = slab
+        # data['voxelsize_mm'] = self.voxelsize_mm
+        # data['orig_shape'] = self.orig_shape
+        # data['processing_time'] = self.processing_time
+        return data
 
     def updateVolume(self):
         text = 'Volume [mm3]:\n  unknown'
@@ -1151,6 +1214,35 @@ help = {
     'test': 'run unit test',
 }
 
+def rescale_data(data, scale):
+    if data.ndim == 2:
+        data = np.reshape(data, np.hstack(1, data.shape))
+
+    new_shape = np.array(data.shape) * (1, scale, scale)
+    data2 = np.zeros(new_shape, dtype=data.dtype)
+    for i in range(data.shape[0]):
+        data2[i,:,:] = cv2.resize(data[i,:,:], None, fx=scale, fy=scale)
+    return data2
+
+
+def windowing(data, level=50, width=350, sub1024=False):
+    #srovnani na standardni skalu = odecteni 1024HU
+    if sub1024:
+        data -= 1024
+
+    #zjisteni minimalni a maximalni density
+    minHU = level - width
+    maxHU = level + width
+
+    if data.ndim == 3:
+        for idx in range(data.shape[0]):
+            #rescalovani intenzity tak, aby skala <minHU, maxHU> odpovidala intervalu <0,255>
+            data[idx,:,:] = skexp.rescale_intensity(data[idx,:,:], in_range=(minHU, maxHU), out_range=(0, 255))
+    else:
+        data = skexp.rescale_intensity(data, in_range=(minHU, maxHU), out_range=(0, 255))
+
+    return data.astype(np.uint8)
+
 def main(filename=''):
     parser = OptionParser(description='Segmentation editor')
     parser.add_option('-f','--filename', action='store',
@@ -1187,6 +1279,13 @@ def main(filename=''):
             dcr = dcmreaddata.DicomReader(options.in_filenam)
             data3d = dcr.get_3Ddata()
 
+    #downscaling the data
+    scale = 0.25
+    data3d = rescale_data(data3d, scale)
+
+    #windowing
+    data3d = windowing(data3d)
+
     app = QApplication(sys.argv)
     pyed = QTSeedEditor(data3d)
     # pyed = QTSeedEditor(data3d,
@@ -1197,9 +1296,10 @@ def main(filename=''):
     sys.exit(app.exec_())
 
     app = QApplication(sys.argv)
-    pyed = QTSeedEditor(self.data3d, contours=self.segmentation)
+    pyed = QTSeedEditor(self.data3d)#, contours=self.segmentation)
     pyed.exec_()
 
 if __name__ == "__main__":
-    filename = r'c:\Data\kky\53596059\Export0000\SR0000'
+    # filename = r'c:\Data\kky\53596059\Export0000\SR0000'
+    filename = r'c:\Data\kky\38289898\export1'
     main(filename)
