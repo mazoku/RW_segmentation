@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d079795d-3a62-4625-a8ef-96dd4b668414" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main_GUI.py" afterPath="$PROJECT_DIR$/main_GUI.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/interactiv_editor.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main_gui.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organ_segmentation_window.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="RW_segmentation.iws" />
@@ -15,8 +17,12 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/RW_segmentation$organ_segmentation_window.coverage" NAME="organ_segmentation_window Coverage Results" MODIFIED="1389874968432" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RW_segmentation$organ_segmentation.coverage" NAME="organ_segmentation Coverage Results" MODIFIED="1389795119345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../liver-surgery/src" />
-    <SUITE FILE_PATH="coverage/RW_segmentation$main_GUI.coverage" NAME="main_GUI Coverage Results" MODIFIED="1389796012752" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RW_segmentation$interactiv_editor.coverage" NAME="interactiv_editor Coverage Results" MODIFIED="1389862336779" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RW_segmentation$organ_segmentation_gui.coverage" NAME="organ_segmentation_gui Coverage Results" MODIFIED="1389865307843" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../liver-surgery/src" />
+    <SUITE FILE_PATH="coverage/RW_segmentation$main_gui.coverage" NAME="main_gui Coverage Results" MODIFIED="1389860287555" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RW_segmentation$main_GUI.coverage" NAME="main_GUI Coverage Results" MODIFIED="1389855872176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RW_segmentation$seed_editor_qt.coverage" NAME="seed_editor_qt Coverage Results" MODIFIED="1389702077517" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../liver-surgery/extern/pyseg_base/src" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -33,21 +39,23 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="main_GUI.py" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/main_GUI.py">
+          <file leaf-file-name="interactiv_editor.py" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/interactiv_editor.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="1141" column="0" selection-start="36569" selection-end="36569" vertical-scroll-proportion="0.33206832" vertical-offset="19222" max-vertical-offset="22287">
+                <state line="1285" column="0" selection-start="41418" selection-end="41418" vertical-scroll-proportion="0.0" vertical-offset="1337" max-vertical-offset="21998">
                   <folding>
-                    <element signature="e#150#183#0" expanded="true" />
+                    <marker date="1389874968411" expanded="true" signature="36299:36320" placeholder="..." />
+                    <marker date="1389874968411" expanded="true" signature="36350:37158" placeholder="..." />
+                    <marker date="1389874968411" expanded="true" signature="37183:37726" placeholder="..." />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="organ_segmentation_gui.py" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../liver-surgery/src/organ_segmentation_gui.py">
+          <file leaf-file-name="main_gui.py" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/main_gui.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="886" column="0" selection-start="29719" selection-end="29719" vertical-scroll-proportion="-11.48" vertical-offset="14588" max-vertical-offset="18428">
+                <state line="14" column="22" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
                   <folding />
                 </state>
               </provider>
@@ -56,7 +64,7 @@
           <file leaf-file-name="organ_segmentation.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/../liver-surgery/src/organ_segmentation.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="688" column="0" selection-start="22259" selection-end="22259" vertical-scroll-proportion="0.0" vertical-offset="11536" max-vertical-offset="16524">
+                <state line="688" column="0" selection-start="22259" selection-end="22259" vertical-scroll-proportion="0.0" vertical-offset="11696" max-vertical-offset="16541">
                   <folding />
                 </state>
               </provider>
@@ -65,8 +73,19 @@
           <file leaf-file-name="seed_editor_qt.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/../liver-surgery/extern/pyseg_base/src/seed_editor_qt.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="856" column="8" selection-start="27151" selection-end="27151" vertical-scroll-proportion="0.0" vertical-offset="14324" max-vertical-offset="20774">
+                <state line="856" column="8" selection-start="27151" selection-end="27151" vertical-scroll-proportion="0.0" vertical-offset="14552" max-vertical-offset="20961">
                   <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="organ_segmentation_window.py" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/organ_segmentation_window.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="260" column="0" selection-start="8278" selection-end="8278" vertical-scroll-proportion="0.6007905" vertical-offset="4116" max-vertical-offset="6222">
+                  <folding>
+                    <element signature="e#1#19#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -75,14 +94,11 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="main_GUI.py" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/main_GUI.py">
+          <file leaf-file-name="interactiv_editor.py" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/interactiv_editor.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="522" column="22" selection-start="14949" selection-end="14949" vertical-scroll-proportion="0.0" vertical-offset="8449" max-vertical-offset="22287">
-                  <folding>
-                    <element signature="e#150#183#0" expanded="true" />
-                    <marker date="1389796012746" expanded="true" signature="34888:35645" placeholder="..." />
-                  </folding>
+                <state line="630" column="0" selection-start="19225" selection-end="19225" vertical-scroll-proportion="-4.7035575" vertical-offset="12716" max-vertical-offset="21998">
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -90,7 +106,7 @@
           <file leaf-file-name="seed_editor_qt.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/../liver-surgery/extern/pyseg_base/src/seed_editor_qt.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="1119" column="0" selection-start="35523" selection-end="35523" vertical-scroll-proportion="0.0" vertical-offset="19458" max-vertical-offset="20774">
+                <state line="1119" column="0" selection-start="35523" selection-end="35523" vertical-scroll-proportion="0.0" vertical-offset="19023" max-vertical-offset="20961">
                   <folding />
                 </state>
               </provider>
@@ -99,18 +115,27 @@
           <file leaf-file-name="organ_segmentation.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/../liver-surgery/src/organ_segmentation.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="877" column="38" selection-start="29439" selection-end="29439" vertical-scroll-proportion="0.0" vertical-offset="14682" max-vertical-offset="16524">
+                <state line="877" column="38" selection-start="29439" selection-end="29439" vertical-scroll-proportion="0.0" vertical-offset="14909" max-vertical-offset="16541">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="organ_segmentation_gui.py" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="organ_segmentation_gui.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/../liver-surgery/src/organ_segmentation_gui.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="125" column="21" selection-start="3302" selection-end="3315" vertical-scroll-proportion="0.33266932" vertical-offset="1958" max-vertical-offset="18615">
+                <state line="398" column="0" selection-start="12930" selection-end="12930" vertical-scroll-proportion="0.0" vertical-offset="6428" max-vertical-offset="18445">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="organ_segmentation_window.py" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/organ_segmentation_window.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="179" column="35" selection-start="5384" selection-end="5396" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6222">
                   <folding>
-                    <element signature="e#126#138#0" expanded="true" />
+                    <element signature="e#1#19#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -140,6 +165,12 @@
         <option value="$PROJECT_DIR$/testing.py" />
         <option value="$PROJECT_DIR$/../liver-surgery/src/organ_segmentation.py" />
         <option value="$PROJECT_DIR$/main_GUI.py" />
+        <option value="$PROJECT_DIR$/datawriter.py" />
+        <option value="$PROJECT_DIR$/qmisc.py" />
+        <option value="$PROJECT_DIR$/main_gui.py" />
+        <option value="$PROJECT_DIR$/../liver-surgery/src/organ_segmentation_gui.py" />
+        <option value="$PROJECT_DIR$/interactiv_editor.py" />
+        <option value="$PROJECT_DIR$/organ_segmentation_window.py" />
       </list>
     </option>
   </component>
@@ -191,7 +222,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -212,6 +242,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -229,7 +260,7 @@
       <console-settings />
     </option>
   </component>
-  <component name="RunManager" selected="Python.main_GUI">
+  <component name="RunManager" selected="Python.organ_segmentation_window">
     <configuration default="false" name="main_GUI" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -243,7 +274,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="RW_segmentation" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main_GUI.py" />
+      <option name="SCRIPT_NAME" value="C:\Github\RW_segmentation\interactiv_editor.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PyDebugRunner" />
       <RunnerSettings RunnerId="PythonRunner" />
@@ -251,26 +282,66 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="seed_editor_qt" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="main_gui" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:/Python27/python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../liver-surgery/extern/pyseg_base/src" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="RW_segmentation" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../liver-surgery/extern/pyseg_base/src/seed_editor_qt.py" />
-      <option name="PARAMETERS" value="-i c:/Data/kky/53596059/Export0000/SR0000" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main_gui.py" />
+      <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="organ_segmentation" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="interactiv_editor" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="RW_segmentation" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/interactiv_editor.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="organ_segmentation_window" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="RW_segmentation" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/organ_segmentation_window.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="organ_segmentation_gui" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -283,7 +354,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="RW_segmentation" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../liver-surgery/src/organ_segmentation.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../liver-surgery/src/organ_segmentation_gui.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PyDebugRunner" />
       <RunnerSettings RunnerId="PythonRunner" />
@@ -458,17 +529,21 @@
       <option name="PARAMETERS" value="-i" />
       <method />
     </configuration>
-    <list size="4">
+    <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python.Unnamed" />
       <item index="1" class="java.lang.String" itemvalue="Python.main_GUI" />
-      <item index="2" class="java.lang.String" itemvalue="Python.seed_editor_qt" />
-      <item index="3" class="java.lang.String" itemvalue="Python.organ_segmentation" />
+      <item index="2" class="java.lang.String" itemvalue="Python.main_gui" />
+      <item index="3" class="java.lang.String" itemvalue="Python.interactiv_editor" />
+      <item index="4" class="java.lang.String" itemvalue="Python.organ_segmentation_window" />
+      <item index="5" class="java.lang.String" itemvalue="Python.organ_segmentation_gui" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Python.main_GUI" />
-        <item index="1" class="java.lang.String" itemvalue="Python.organ_segmentation" />
-        <item index="2" class="java.lang.String" itemvalue="Python.seed_editor_qt" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python.organ_segmentation_window" />
+        <item index="1" class="java.lang.String" itemvalue="Python.organ_segmentation_gui" />
+        <item index="2" class="java.lang.String" itemvalue="Python.interactiv_editor" />
+        <item index="3" class="java.lang.String" itemvalue="Python.main_gui" />
+        <item index="4" class="java.lang.String" itemvalue="Python.main_GUI" />
       </list>
     </recent_temporary>
   </component>
@@ -506,12 +581,13 @@
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32904884" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32904884" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12144887" sideWeight="0.46143958" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12144887" sideWeight="0.2647815" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3984576" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12428977" sideWeight="0.3084833" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12428977" sideWeight="0.41902313" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3982522" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27249357" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -519,7 +595,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -537,12 +612,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/main_GUI.py</url>
-          <line>1130</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/main_GUI.py</url>
+          <url>file://$PROJECT_DIR$/interactiv_editor.py</url>
           <line>333</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
@@ -551,85 +621,34 @@
           <line>886</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/../liver-surgery/src/organ_segmentation_gui.py</url>
+          <line>1065</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="19" />
+      <option name="time" value="23" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/main_GUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="639" column="58" selection-start="20163" selection-end="20163" vertical-scroll-proportion="0.0" vertical-offset="10863" max-vertical-offset="20587">
-          <folding>
-            <element signature="e#150#183#0" expanded="true" />
-            <marker date="1389796012746" expanded="true" signature="34888:35645" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../liver-surgery/extern/pyseg_base/src/seed_editor_qt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1120" column="0" selection-start="35575" selection-end="35575" vertical-scroll-proportion="0.0" vertical-offset="8080" max-vertical-offset="19516">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://Z:/Work/Python/RandomWalker/MySketcher.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="36" selection-start="611" selection-end="611" vertical-scroll-proportion="-1.1071913" vertical-offset="1122" max-vertical-offset="4590" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dcmreaddata.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9503">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="730" selection-end="730" vertical-scroll-proportion="0.93131316" vertical-offset="49" max-vertical-offset="612" />
-      </provider>
-    </entry>
     <entry file="file://Z:/Work/Python/Seeding/genetic_algs_superpixels.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="627" column="49" selection-start="22093" selection-end="22133" vertical-scroll-proportion="0.0" vertical-offset="10187" max-vertical-offset="10744">
-          <folding />
-        </state>
+        <state line="627" column="49" selection-start="22093" selection-end="22133" vertical-scroll-proportion="0.0" vertical-offset="10187" max-vertical-offset="10744" />
       </provider>
     </entry>
     <entry file="file://Z:/Work/Python/Seeding/autoseedRW.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="173" column="12" selection-start="6256" selection-end="6256" vertical-scroll-proportion="0.0" vertical-offset="2703" max-vertical-offset="4216">
-          <folding />
-        </state>
+        <state line="173" column="12" selection-start="6256" selection-end="6256" vertical-scroll-proportion="0.0" vertical-offset="2703" max-vertical-offset="4216" />
       </provider>
     </entry>
     <entry file="file://Z:/Work/Python/Seeding/tools.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="4" selection-start="71" selection-end="103" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4777">
-          <folding />
-        </state>
+        <state line="3" column="4" selection-start="71" selection-end="103" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4777" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../liver-surgery/extern/pyseg_base/src/pycut.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="185" column="12" selection-start="5711" selection-end="5711" vertical-scroll-proportion="0.0" vertical-offset="2832" max-vertical-offset="8415">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../liver-surgery/src/organ_segmentation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="877" column="38" selection-start="29439" selection-end="29439" vertical-scroll-proportion="0.0" vertical-offset="14682" max-vertical-offset="16524">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../liver-surgery/extern/pyseg_base/src/seed_editor_qt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1119" column="0" selection-start="35523" selection-end="35523" vertical-scroll-proportion="0.0" vertical-offset="19458" max-vertical-offset="20774">
-          <folding />
-        </state>
+        <state line="185" column="12" selection-start="5711" selection-end="5711" vertical-scroll-proportion="0.0" vertical-offset="2832" max-vertical-offset="8415" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../liver-surgery/src/misc.py">
@@ -641,26 +660,75 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/misc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1904">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1904" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm30/system/python_stubs/-762174762/PyQt4/QtGui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6918" column="8" selection-start="253228" selection-end="253228" vertical-scroll-proportion="0.3320158" vertical-offset="117438" max-vertical-offset="906287">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_GUI.py">
+    <entry file="file://$PROJECT_DIR$/qmisc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="522" column="22" selection-start="14949" selection-end="14949" vertical-scroll-proportion="0.0" vertical-offset="8449" max-vertical-offset="22287">
-          <folding>
-            <element signature="e#150#183#0" expanded="true" />
-            <marker date="1389796012746" expanded="true" signature="34888:35645" placeholder="..." />
-          </folding>
+        <state line="46" column="28" selection-start="961" selection-end="961" vertical-scroll-proportion="0.36561266" vertical-offset="580" max-vertical-offset="3519" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datawriter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="151" column="0" selection-start="4156" selection-end="4672" vertical-scroll-proportion="0.71343875" vertical-offset="2172" max-vertical-offset="2890" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seg2mesh.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="196" selection-end="196" vertical-scroll-proportion="0.3320158" vertical-offset="2" max-vertical-offset="7055" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_gui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="22" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../liver-surgery/extern/pyseg_base/src/seed_editor_qt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="856" column="8" selection-start="27151" selection-end="27151" vertical-scroll-proportion="0.0" vertical-offset="14552" max-vertical-offset="20961">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../liver-surgery/src/organ_segmentation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="688" column="0" selection-start="22259" selection-end="22259" vertical-scroll-proportion="0.0" vertical-offset="11696" max-vertical-offset="16541">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../liver-surgery/src/organ_segmentation_gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="21" selection-start="3302" selection-end="3315" vertical-scroll-proportion="0.33266932" vertical-offset="1958" max-vertical-offset="18615">
+        <state line="398" column="0" selection-start="12930" selection-end="12930" vertical-scroll-proportion="0.0" vertical-offset="6428" max-vertical-offset="18445">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/interactiv_editor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1285" column="0" selection-start="41418" selection-end="41418" vertical-scroll-proportion="0.0" vertical-offset="1337" max-vertical-offset="21998">
           <folding>
-            <element signature="e#126#138#0" expanded="true" />
+            <marker date="1389874968411" expanded="true" signature="36299:36320" placeholder="..." />
+            <marker date="1389874968411" expanded="true" signature="36350:37158" placeholder="..." />
+            <marker date="1389874968411" expanded="true" signature="37183:37726" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/organ_segmentation_window.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="260" column="0" selection-start="8278" selection-end="8278" vertical-scroll-proportion="0.6007905" vertical-offset="4116" max-vertical-offset="6222">
+          <folding>
+            <element signature="e#1#19#0" expanded="true" />
           </folding>
         </state>
       </provider>

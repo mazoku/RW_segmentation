@@ -587,15 +587,17 @@ class QTSeedEditor(QDialog):
         self.button_group.addButton(r4, 4)
         self.button_group.addButton(r5, 5)
         self.connect(self.button_group, SIGNAL("buttonClicked(int)"), self.change_seed_class)
-        print 'checked: ', self.button_group.checkedId()
         #-------------------------------------------------------------------
 
         # buttons
+        # btn_save = QPushButton('Save', self)
+        # btn_save.clicked.connect(self.save)
+
         btn_quit = QPushButton("Quit", self)
         btn_quit.clicked.connect(self.quit)
 
-        btn_save = QPushButton('Save', self)
-        btn_save.clicked.connect(self.save)
+        # btn_crop = QPushButton('Crop', self)
+        # btn_crop.clicked.connect(self.crop)
 
         combo_dmask = QComboBox(self)
         combo_dmask.activated.connect(self.changeMask)
@@ -635,14 +637,14 @@ class QTSeedEditor(QDialog):
             vopts.append(QLabel('Selection mode:'))
             vopts.append(combo_contour)
 
-        # if mode == 'crop':
-        #     btn_crop = QPushButton("Crop", self)
-        #     btn_crop.clicked.connect(self.crop)
-        #     appmenu.append(QLabel('<b>Crop mode</b><br><br><br>' +
-        #                           'Select the crop region<br>' +
-        #                           'using the left mouse button<br><br>'))
-        #     appmenu.append(btn_crop)
-        #
+        if mode == 'crop':
+            btn_crop = QPushButton("Crop", self)
+            btn_crop.clicked.connect(self.crop)
+            appmenu.append(QLabel('<b>Crop mode</b><br><br><br>' +
+                                  'Select the crop region<br>' +
+                                  'using the left mouse button<br><br>'))
+            appmenu.append(btn_crop)
+
         # if mode == 'draw':
         #     appmenu.append(QLabel('<b>Manual segmentation<br> mode</b><br><br><br>' +
         #                           'Mark the region of interest<br>' +
@@ -706,8 +708,10 @@ class QTSeedEditor(QDialog):
         vbox_left.addWidget(self.get_line())
         vbox_left.addWidget(number_group)
 
-        vbox_app.addWidget(btn_save)
+        # vbox_app.addWidget(btn_crop)
+
         vbox_app.addStretch(1)
+        # vbox_app.addWidget(btn_save)
         vbox_app.addWidget(btn_quit)
 
         hbox.addLayout(vbox_left)
@@ -752,6 +756,7 @@ class QTSeedEditor(QDialog):
 
         self.mode = mode
         self.mode_fun = modeFun
+        # self.datapath = datapath
 
         self.actual_view = 'axial'
         self.act_transposition = VIEW_TABLE[self.actual_view]
@@ -808,7 +813,7 @@ class QTSeedEditor(QDialog):
     def change_seed_class(self, id):
         self.current_class = id
         self.slice_box.seed_mark = self.current_class
-        print 'Current seed class changed to ', id, '.'
+        # print 'Current seed class changed to ', id, '.'
 
     def showStatus(self, msg):
         self.status_bar.showMessage(QString(msg))
@@ -1130,43 +1135,43 @@ class QTSeedEditor(QDialog):
     def quit(self, event):
         self.close()
 
-    def save(self, event):
-        odp = os.path.expanduser("~/lisa_data")
-        if not op.exists(odp):
-            os.makedirs(odp)
+    # def save(self, event):
+    #     odp = os.path.expanduser("~/lisa_data")
+    #     if not op.exists(odp):
+    #         os.makedirs(odp)
+    #
+    #     data = self.export()
+    #     # data['version'] = self.version
+    #     # data['experiment_caption'] = self.experiment_caption
+    #     # data['lisa_operator_identifier'] = self.lisa_operator_identifier
+    #     pth, filename = op.split(op.normpath(self.datapath))
+    #     # filename += "-" + self.experiment_caption
+    #     filepath = 'org-' + filename + '.pklz'
+    #     filepath = op.join(odp, filepath)
+    #     filepath = misc.suggest_filename(filepath)
+    #     misc.obj_to_file(data, filepath, filetype='pklz')
+    #
+    #     filepath = 'organ_last.pklz'
+    #     filepath = op.join(odp, filepath)
+    #     misc.obj_to_file(data, filepath, filetype='pklz')
 
-        data = self.export()
-        # data['version'] = self.version
-        # data['experiment_caption'] = self.experiment_caption
-        # data['lisa_operator_identifier'] = self.lisa_operator_identifier
-        pth, filename = op.split(op.normpath(self.datapath))
-        filename += "-" + self.experiment_caption
-        filepath = 'org-' + filename + '.pklz'
-        filepath = op.join(odp, filepath)
-        filepath = misc.suggest_filename(filepath)
-        misc.obj_to_file(data, filepath, filetype='pklz')
-
-        filepath = 'organ_last.pklz'
-        filepath = op.join(odp, filepath)
-        misc.obj_to_file(data, filepath, filetype='pklz')
-
-    def export(self):
-        slab = {}
-        slab['none'] = 0
-        slab['liver'] = 1
-        slab['lesions'] = 6
-        slab.update(self.slab)
-
-        data = {}
-        data['version'] = (1, 0, 1)
-        data['data3d'] = self.img
-        # data['crinfo'] = self.crinfo
-        data['segmentation'] = self.segmentation
-        data['slab'] = slab
-        # data['voxelsize_mm'] = self.voxelsize_mm
-        # data['orig_shape'] = self.orig_shape
-        # data['processing_time'] = self.processing_time
-        return data
+    # def export(self):
+    #     slab = {}
+    #     slab['none'] = 0
+    #     slab['liver'] = 1
+    #     slab['lesions'] = 6
+    #     slab.update(self.slab)
+    #
+    #     data = {}
+    #     data['version'] = (1, 0, 1)
+    #     data['data3d'] = self.img
+    #     # data['crinfo'] = self.crinfo
+    #     data['segmentation'] = self.segmentation
+    #     data['slab'] = slab
+    #     # data['voxelsize_mm'] = self.voxelsize_mm
+    #     # data['orig_shape'] = self.orig_shape
+    #     # data['processing_time'] = self.processing_time
+    #     return data
 
     def updateVolume(self):
         text = 'Volume [mm3]:\n  unknown'
@@ -1287,7 +1292,7 @@ def main(filename=''):
     data3d = windowing(data3d)
 
     app = QApplication(sys.argv)
-    pyed = QTSeedEditor(data3d)
+    pyed = QTSeedEditor(data3d, filename, mode='seed')
     # pyed = QTSeedEditor(data3d,
     #                     seeds=dataraw['segdata'],
     #                     mode=options.mode,
@@ -1295,9 +1300,9 @@ def main(filename=''):
 
     sys.exit(app.exec_())
 
-    app = QApplication(sys.argv)
-    pyed = QTSeedEditor(self.data3d)#, contours=self.segmentation)
-    pyed.exec_()
+    # app = QApplication(sys.argv)
+    # pyed = QTSeedEditor(self.data3d, filename)#, contours=self.segmentation)
+    # pyed.exec_()
 
 if __name__ == "__main__":
     # filename = r'c:\Data\kky\53596059\Export0000\SR0000'
